@@ -2,6 +2,7 @@ window.addEventListener("load", function (event) {
   text = this.document.getElementById("fetchData");
   detail = this.document.getElementById("detail");
   inputElement = this.document.getElementById("search");
+  searchText = inputElement.value;
 
   var startButton = this.document.getElementById("start");
 
@@ -15,10 +16,30 @@ window.addEventListener("load", function (event) {
     searchText = inputElement.value;
   });
 
-  startButton.addEventListener("click", displayData);
+  startButton.addEventListener("click", () => {
+    while (detail.firstChild) {
+      detail.removeChild(detail.firstChild);
+    }
+    if (searchText === "") {
+      displayAllData();
+    } else {
+      displayData();
+    }
+  });
 });
 
 function displayData() {
+  ulozenaData.forEach((bird) => {
+    if (bird.comName === searchText) {
+      const newItem = document.createElement("li");
+      newItem.textContent = bird.comName;
+
+      detail.appendChild(newItem);
+    }
+  });
+}
+
+function displayAllData() {
   ulozenaData.forEach((bird) => {
     const newItem = document.createElement("li");
     newItem.textContent = bird.comName;
