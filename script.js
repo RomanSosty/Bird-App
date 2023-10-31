@@ -9,18 +9,23 @@ window.addEventListener("load", function (event) {
     loadAllCzechBird();
   }
 
-  const ulozenaDataJSON = localStorage.getItem("ulozenaData");
+  ulozenaData = JSON.parse(localStorage.getItem("ulozenaData"));
 
   inputElement.addEventListener("input", function () {
     searchText = inputElement.value;
   });
 
-  startButton.addEventListener("click", () => {
-    console.log(ulozenaDataJSON);
-  });
+  startButton.addEventListener("click", displayData);
 });
 
-function displayData() {}
+function displayData() {
+  ulozenaData.forEach((bird) => {
+    const newItem = document.createElement("li");
+    newItem.textContent = bird.comName;
+
+    detail.appendChild(newItem);
+  });
+}
 
 function loadAllCzechBird() {
   const apiUrl = "https://ebird.org/ws2.0/data/obs/CZ/recent";
