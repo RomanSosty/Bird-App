@@ -6,9 +6,15 @@
     <title>BirdApp</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
+    <!-- Připojení Leaflet pomocí CDN -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   </head>
   <body>
-    <div>
+    <div class="finder">
       <form>
         <input
           type="text"
@@ -17,10 +23,18 @@
         />
         <button type="button" id="start">Start</button>
       </form>
-      <ul id="fetchData"></ul>
+      <ul id="detail"></ul>
+    </div>
+    <div class="mapData">
+      <div id="map" style="height: 400px; width: 100%"></div>
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <ul id="searchResults"></ul>
+        </div>
+      </div>
     </div>
     <div>
-      <p id="detail"></p>
+      <button type="button" id="findNearByMe">Vyhledat v okruhu</button>
     </div>
   </body>
 </html>
