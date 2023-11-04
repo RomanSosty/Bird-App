@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.custom-icon {
+  background-color: red;
+  color: white;
+}
